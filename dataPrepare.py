@@ -79,15 +79,16 @@ class TrajectoryDataset(Dataset):
                 plt.subplot(2,3,2)
                 plt.plot(frame[1:,1+i*4],'ro')
                 '''
-                x_vel = (frame[1:,0+i*4] -  frame[:-1, 0+i*4])/0.1;
-                v_avg = (x_vel[1:] +x_vel[:-1])/2.0;
-                v1 = [2.0*x_vel[0]- v_avg[0]];v_end = [2.0*x_vel[-1]- v_avg[-1]];
+                x_vel = (frame[1:,0+i*4] -  frame[:-1, 0+i*4])/0.1
+                v_avg = (x_vel[1:] +x_vel[:-1])/2.0
+                v1 = [2.0*x_vel[0]- v_avg[0]];v_end = [2.0*x_vel[-1]- v_avg[-1]]
                 vel = (v1+ v_avg.tolist()+v_end)
                 vel = np.array(vel)
                 
-                y_vel = (frame[1:,1+i*4] -  frame[:-1, 1+i*4])/0.1;
-                vy_avg = (y_vel[1:] +y_vel[:-1])/2.0;
-                vy1 = [2.0*y_vel[0]- vy_avg[0]];vy_end = [2.0*y_vel[-1]- vy_avg[-1]];
+                y_vel = (frame[1:,1+i*4] -  frame[:-1, 1+i*4])/0.1
+                vy_avg = (y_vel[1:] +y_vel[:-1])/2.0
+                vy1 = [2.0*y_vel[0]- vy_avg[0]]
+                vy_end = [2.0*y_vel[-1]- vy_avg[-1]]
                 vely = (vy1+ vy_avg.tolist()+ vy_end)
                 vely = np.array(vely)
                 '''

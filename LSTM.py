@@ -26,7 +26,6 @@ if torch.cuda.is_available():
     print('ok')
 Training_generator, Test, Valid, WholeSet= get_dataloader() #Load the data
 
-
 class NNPred(nn.Module):
     def __init__(self, input_size, output_size,hidden_size,batch_size, dropout=0.05):
         super(NNPred, self).__init__()
@@ -70,11 +69,17 @@ def trainIters(encoder, n_iters, print_every=1000, plot_every=1, learning_rate=0
     pltcount = 0
     prtcount = 0
     cp = 0
+    inner_loop_count = 0
     for iter in range(1, n_iters + 1):
         if iter%50==1:
             cp = cp+1
             torch.save(encoder.state_dict(), str(cp)+'checkpoint.pth.tar')
+            print("epoch: ", iter)
+            inner_loop_count = 0
         for local_batch, local_labels in Training_generator:
+            print("Inner Loop: ", inner_loop_count)
+            inner_loop_count += 1
+
             if local_batch.shape[0]!=BatchSize:
                 continue
             pltcount = pltcount+1
@@ -132,9 +137,10 @@ def Eval_net(encoder):
             plt.figure(i)
             plt.xlim(0,80)
             plt.ylim(0,2000)
-            plt.plot(pY[i,:,2],pY[i,:,3],'r')
-            plt.plot(Y[i,:,2],Y[i,:,3],'g')
-            plt.plot(rst_xy[i,:,0],rst_xy[i,:,1],'b')
+            plt.plot(pY[i,:,2],pY[i,:,3],'r', label='Predicted') #Predicted Y
+            plt.plot(Y[i,:,2],Y[i,:,3],'g', label="Ground Truth") #Ground Truth
+            plt.plot(rst_xy[i,:,0],rst_xy[i,:,1],'b', label="rst_xy") #What is RST?
+            plt.legend()
         plt.show()
         
 def calcu_XY(predY,labelY):
