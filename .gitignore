@@ -1,1 +1,7 @@
 *.pickle
+
+__pycache__/
+
+datasets/
+
+checkpoints/
