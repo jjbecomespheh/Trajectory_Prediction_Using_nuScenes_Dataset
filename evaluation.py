@@ -207,7 +207,7 @@ def look_ahead_test_all(lstm, test_df, test_inst_ids, test_id, frames_to_predict
     return pred_data, data_expected[:,:2], data_original[:,:2]
 
 if __name__ == "__main__":
-    PATH = './checkpoints/checkpt_40.pt'
+    PATH = './checkpoints/best_checkpt_nohl.pt'
     input_size = 2
     hidden_size = 2
     num_layers = 1
@@ -228,7 +228,7 @@ if __name__ == "__main__":
     print(f"ADE: {avg_ade}")
     print(f"FDE: {avg_fde}")
 
-    index = 19
+    index = 67
     _, data_expected, _= look_ahead_test(lstm, test_df, test_inst_ids, index, frames_to_predict, 0, seq_length)
     num_of_times = len(data_expected)
     print(num_of_times)
@@ -236,7 +236,8 @@ if __name__ == "__main__":
     for i in range(num_of_times-5):
         print(f"Frame {i}")
         predicted_data, data_expected, data_original = look_ahead_test(lstm, test_df, test_inst_ids, index, frames_to_predict, i, seq_length)
-        plot_results(i, predicted_data, data_expected, data_original)
+        plot_results(i, predicted_data, data_expected, data_original, save=False)
     
-    # conv_to_gif()
+    # Convert path to a gif
+    # conv_to_gif('./gif/path3.gif')
 

@@ -14,7 +14,7 @@ def plot_loss(tl, vl):
     plt.show()
 
 # Plots results of trajectory prediction
-def plot_results(num, predicted_data, data_expected, data_original=None):
+def plot_results(num, predicted_data, data_expected, data_original=None, save=False):
     original_plot_x, original_plot_y = [], []
     expected_plot_x, expected_plot_y = [], []
     data_predict_x, data_predict_y = [], []
@@ -44,6 +44,9 @@ def plot_results(num, predicted_data, data_expected, data_original=None):
     plt.ylim(ulti_min_y-10, ulti_max_y+10)
     plt.suptitle('Time-Series Prediction')
     plt.legend()
-    # plt.savefig("pictures/myfig"+str(num)+".jpeg")
+
+    if save:
+        plt.savefig("pictures/myfig"+str(num)+".jpeg")
+
     plt.show()
 

@@ -87,14 +87,14 @@ def get_all_data(df, inst_id, seq_length, cols):
 
     return dataX, dataY, expected_x, expected_y, dataZ, dataR, expected_z, expected_r
 
-def conv_to_gif():
+def conv_to_gif(path):
     
     images = []
     for filename in natsort.natsorted(os.listdir("./pictures/")):
         print(filename)
         for i in range(4):
             images.append(imageio.imread("./pictures/"+filename))
-    imageio.mimsave('./gif/path.gif', images)
+    imageio.mimsave(path, images)
 
     for filename in natsort.natsorted(os.listdir("./pictures/")):
         os.remove("./pictures/"+filename)
