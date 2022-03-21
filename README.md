@@ -1,34 +1,35 @@
-# Object Trajectory Prediction for Autonomous Vehicles
+# Trajectory Prediction for Autonomous Vehicles
 
 ![Alt Text](./gif/path2.gif)
 
-## About:
+## Pre-requisites
 
-In this project, we are motivated by self-driving vehicles operating in a dynamic and uncertain environment. To be more specific, we focused on the urban traffic scene where the road is shared by a set of distinct agents like cars, pedestrians and cyclists. Self-driving vehicles require accurate and precise future trajectories prediction of the surrounding agents, where a trajectory is referred to as a sequence of x-y points. However, due to the stochastic nature of each agent’s
-future behaviour, predicting future trajectories becomes a relatively complicated
-process.
+Follow the following steps to set up:
 
-To enable us to model a more realistic trajectory prediction, we trained and evaluated our approach using a well-established public autonomous driving dataset, the nuScenes dataset. The team has attempted various ways to improve the evaluation results of the model, such as experimenting on different model designs, trying different normalization techniques and increasing the modality of the model by incorporating more input features. The evaluation results were then compared with those from the state-of-the-art prediction models, and have shown a reasonable evaluation score.
-
-## Goal:
-Predict the 3 seconds future trajecotries of vehicles (Cars, Vans and Trucks) in the nuScenes dataset
-
-For more details, you can read our [report](https://drive.google.com/file/d/125xHuyXsAMSlXQ6Ikl8ptZoB03nBhRwB/view?usp=sharing)
-
-### Install
-
-```bash
-git clone https://github.com/hatsumikana/Trajectory_Prediction_Using_nuScenes_Dataset.git  # clone
+```
+git clone https://github.com/dylantzx/Trajectory-Prediction.git 
 pip install -r requirements.txt  # install
 ```
 
-### Train
-```python
+## About:
+
+In this project, we are motivated by self-driving vehicles operating in a dynamic and uncertain environment. To be more specific, we focused on the urban traffic scene where the road is shared by a set of distinct agents like cars, pedestrians and cyclists. Self-driving vehicles require accurate and precise future trajectories prediction of the surrounding agents, where a trajectory is referred to as a sequence of x-y points. However, due to the stochastic nature of each agent’s future behaviour, predicting future trajectories becomes a relatively complicated process.
+
+To enable us to model a more realistic trajectory prediction, we trained and evaluated our approach using a well-established public autonomous driving dataset, the nuScenes dataset. The team has attempted various ways to improve the evaluation results of the model, such as experimenting on different model designs, trying different normalization techniques and increasing the modality of the model by incorporating more input features. The evaluation results were then compared with those from the state-of-the-art prediction models, and have shown a reasonable evaluation score.
+
+The goal is to predict the 3 seconds future trajecotries of vehicles (Cars, Vans and Trucks) in the nuScenes dataset.
+
+For more details, you can read our [report](https://drive.google.com/file/d/125xHuyXsAMSlXQ6Ikl8ptZoB03nBhRwB/view?usp=sharing)
+
+## Training
+Simply execute the training script to train on the trg.csv dataset:
+```
 python3 train.py
 ```
 
-### Evaluation
-```python
+## Evaluation
+For evaluation, edit the checkpoint file obtained via training in `line 210` where `PATH = <your checkpoint file path>`, and run the script:
+```
 python3 evaluate.py
 ```
 
